@@ -1,7 +1,7 @@
 // Global Variables
 const submit = document.querySelector('.form__submit');
 const requirementsField = document.createElement('p');
-let requirementsList = [];
+let requirementsList = '';
 
 // Form Activation
 const formActivation = document.querySelector('.map__pin');
@@ -24,15 +24,15 @@ function validateTitle() {
     const lengthTitleValue = document.querySelector('#title').value.length;
 
     if (lengthTitleValue === 0) {
-        requirementsList.push('Пожалуйста, заполните поле: Заголовок объявления');
+        requirementsList += 'Пожалуйста, заполните поле: Заголовок объявления<br>';
     }
 
     if (lengthTitleValue !== 0 && lengthTitleValue < 30) {
-        requirementsList.push('Минимальная длина поля "Заголовок объявления": 30 символов');
+        requirementsList += 'Минимальная длина поля "Заголовок объявления": 30 символов<br>';
     }
 
     if (lengthTitleValue > 100) {
-        requirementsList.push('Максимальная длина поля "Заголовок объявления": 100 символов');
+        requirementsList += 'Максимальная длина поля "Заголовок объявления": 100 символов<br>';
     }
 }
 
@@ -43,7 +43,7 @@ function validatePrice() {
     const minPrice = [0, 1000, 5000, 10000];
 
     if (lengthPriceValue === 0) {
-        requirementsList.push(' Пожалуйста, заполните поле: Цена за ночь, руб.');
+        requirementsList += 'Пожалуйста, заполните поле: Цена за ночь, руб.<br>';
     }
 
     else {
@@ -52,7 +52,7 @@ function validatePrice() {
                 document.querySelector('#price').placeholder = minPrice[index];
 
                 if (priceValue < minPrice[index]) {
-                    requirementsList.push(` Цена должна быть не меньше ${minPrice[index]} руб.`);
+                    requirementsList += `Цена должна быть не меньше ${minPrice[index]} руб.<br>`;
                 }
             }
         };
@@ -63,7 +63,7 @@ function validatePrice() {
         getMinPrice('palace', 3);
 
         if (parseInt(priceValue, 10) > 1000000) {
-            requirementsList.push(' Цена не должна быть больше 1000000 руб.');
+            requirementsList += 'Цена не должна быть больше 1000000 руб.<br>';
         }
     }
 }
@@ -75,6 +75,6 @@ function createRecommendations() {
         requirementsField.innerHTML = requirementsList;
         submitForm.appendChild(requirementsField);
 
-        requirementsList = [];
+        requirementsList = '';
     }
 }
