@@ -476,9 +476,9 @@ textarea:focus {
   width: 100%;
 }
 
-/*.notice__form--disabled {*/
-/*  opacity: 0.3;*/
-/*}*/
+.notice__form--disabled {
+  opacity: 0.3;
+}
 
 .form__element {
   box-sizing: border-box;
