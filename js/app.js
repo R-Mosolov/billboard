@@ -20,19 +20,28 @@ submit.addEventListener('click', function (event) {
 });
 
 // Additional Functions for Form Validation
+function illuminateField(attr) {
+    for (let target of document.querySelectorAll(`${attr}`)) {
+        target.setAttribute('style', 'border-color: red;');
+    }
+}
+
 function validateTitle() {
     const lengthTitleValue = document.querySelector('#title').value.length;
 
     if (lengthTitleValue === 0) {
         requirementsList += 'Пожалуйста, заполните поле: Заголовок объявления<br>';
+        illuminateField('#title');
     }
 
     if (lengthTitleValue !== 0 && lengthTitleValue < 30) {
         requirementsList += 'Минимальная длина поля "Заголовок объявления": 30 символов<br>';
+        illuminateField('#title');
     }
 
     if (lengthTitleValue > 100) {
         requirementsList += 'Максимальная длина поля "Заголовок объявления": 100 символов<br>';
+        illuminateField('#title');
     }
 }
 
@@ -44,6 +53,7 @@ function validatePrice() {
 
     if (lengthPriceValue === 0) {
         requirementsList += 'Пожалуйста, заполните поле: Цена за ночь, руб.<br>';
+        illuminateField('#price');
     }
 
     else {
@@ -53,6 +63,7 @@ function validatePrice() {
 
                 if (priceValue < minPrice[index]) {
                     requirementsList += `Цена должна быть не меньше ${minPrice[index]} руб.<br>`;
+                    illuminateField('#price');
                 }
             }
         };
@@ -64,6 +75,7 @@ function validatePrice() {
 
         if (parseInt(priceValue, 10) > 1000000) {
             requirementsList += 'Цена не должна быть больше 1000000 руб.<br>';
+            illuminateField('#price');
         }
     }
 }
