@@ -1,0 +1,3 @@
+let requirementsList = [];
+
+export { requirementsList };
