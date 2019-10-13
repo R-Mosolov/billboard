@@ -1,14 +1,12 @@
+import './modules/form-activation.mjs';
+import { illuminateField } from './modules/illuminate-field.mjs';
+
 // Global Variables
 const submit = document.querySelector('.form__submit');
-const requirementsField = document.createElement('p');
 let requirementsList = '';
 
 // Form Activation
-const formActivation = document.querySelector('.map__pin');
-formActivation.addEventListener('click', function () {
-    const form = document.querySelector('.notice__form');
-    form.classList.remove('notice__form--disabled');
-});
+// Exported formActivation()
 
 // Form Validation
 submit.addEventListener('click', function (event) {
@@ -20,11 +18,7 @@ submit.addEventListener('click', function (event) {
 });
 
 // Additional Functions for Form Validation
-function illuminateField(attr) {
-    for (let target of document.querySelectorAll(`${attr}`)) {
-        target.setAttribute('style', 'border-color: red;');
-    }
-}
+// Exported illuminateField()
 
 function validateTitle() {
     const lengthTitleValue = document.querySelector('#title').value.length;
@@ -81,11 +75,13 @@ function validatePrice() {
 }
 
 function createRecommendations() {
+    const _requirementsField = document.createElement('p');
+
     if (requirementsList.length > 0) {
         const submitForm = document.querySelector('.form__element--submit');
 
-        requirementsField.innerHTML = requirementsList;
-        submitForm.appendChild(requirementsField);
+        _requirementsField.innerHTML = requirementsList;
+        submitForm.appendChild(_requirementsField);
 
         requirementsList = '';
     }
